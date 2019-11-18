@@ -1,7 +1,9 @@
 version: '2'
 services:
   odoo:
-    image: mclfy82/odoo:12.0
+    build:
+      context: .
+      dockerfile: ./Dockerfile
     depends_on:
       - db
     ports:
@@ -17,10 +19,8 @@ services:
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
       - PGDATA=/var/lib/postgresql/data/pgdata
-#      - EXTRA_OPTS=--addons-path addons,my-modules -d helloworl -u helloworl
     volumes:
       - db-data:/var/lib/postgresql/data/
 volumes:
   web-data:
   db-data:
-
