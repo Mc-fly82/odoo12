@@ -73,10 +73,17 @@ RUN set -x; \
         && apt-get -y install -f --no-install-recommends \
         && rm -rf /var/lib/apt/lists/* odoo.deb
 
+# Custom
+RUN apt-get update \
+	&& apt-get upgrade \
+	&& apt-get install zsh git -y \
+	&& sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
 # Copy entrypoint script and Odoo configuration file
 COPY ./entrypoint.sh /
 COPY ./odoo.conf /etc/odoo/
 RUN chown odoo /etc/odoo/odoo.conf
+COPY .zshrc /root/
 
 # Mount /var/lib/odoo to allow restoring filestore and /mnt/extra-addons for users addons
 RUN mkdir -p /mnt/extra-addons \
@@ -92,12 +99,9 @@ ENV ODOO_RC /etc/odoo/odoo.conf
 COPY wait-for-psql.py /usr/local/bin/wait-for-psql.py
 
 # Set default user when running the container
+
+RUN echo "root:root" | chpasswd
+
 USER odoo
-
-RUN apt-get update \
-	&& apt-get upgrade \
-	&& apt-get install zsh git curl -y \
-	&& sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["odoo"]

@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="helloworld.list">
+      <field name="name">helloworld list</field>
+      <field name="model">helloworld.helloworld</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="helloworld.action_window">
+      <field name="name">helloworld window</field>
+      <field name="res_model">helloworld.helloworld</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="helloworld.action_server">
+      <field name="name">helloworld server</field>
+      <field name="model_id" ref="model_helloworld_helloworld"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="helloworld" id="helloworld.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="helloworld.menu_1" parent="helloworld.menu_root"/>
+    <menuitem name="Menu 2" id="helloworld.menu_2" parent="helloworld.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="helloworld.menu_1_list" parent="helloworld.menu_1"
+              action="helloworld.action_window"/>
+    <menuitem name="Server to list" id="helloworld" parent="helloworld.menu_2"
+              action="helloworld.action_server"/>
+    -->
+  </data>
+</odoo>

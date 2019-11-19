@@ -23,6 +23,7 @@ check_config "db_port" "$PORT"
 check_config "db_user" "$USER"
 check_config "db_password" "$PASSWORD"
 check_config "dev" "all"
+check_config "addons-path" "/mnt/extra-addons"
 
 case "$1" in
     -- | odoo)
