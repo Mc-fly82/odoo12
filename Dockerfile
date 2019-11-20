@@ -100,7 +100,7 @@ COPY wait-for-psql.py /usr/local/bin/wait-for-psql.py
 
 # Set default user when running the container
 
-RUN echo "root:root" | chpasswd
+RUN echo "root:su" | chpasswd
 
 USER odoo
 ENTRYPOINT ["/entrypoint.sh"]

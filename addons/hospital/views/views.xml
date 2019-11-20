@@ -1,0 +1,15 @@
+<odoo>
+    <record id="acton_patient" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.hospital</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Créer le premier patient
+            </p>
+        </field>
+    </record>
+    <menuitem id="hospital_root" name="CHU" sequence="0" action="acton_patient"/>
+</odoo>
